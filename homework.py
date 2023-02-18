@@ -16,7 +16,7 @@ class BoardGame():
 
     def play(self, num_people, duration, min_age):
         
-        if num_people >= self.min_players and num_people <= self.max_players and min_age >= self.from_age and duration in range (self.play_time-10, self.play_time + 11):
+        if num_people >= self.min_players and num_people <= self.max_players and min_age >= self.from_age and duration >= (self.play_time - 10) and duration <= (self.play_time + 10):
             self.num_times_played += 1
             print("The '{}' is perfect for you. You will have lots of fun! This is the {} time you have played this game.". format(self.name, self.num_times_played))
             return True
@@ -63,14 +63,11 @@ class EuroGame(BoardGame):
         
 
     def campfire_allowed(self):
-        materials = ["cardboard", "wood", "plastic", "metal", None]
+        materials = ["cardboard", "wood", "plastic", "metal"]
 
         if self.figures_material not in materials:
             raise ValueError("Please enter a valid figures material: cardboard, wood, plastic or metal")
-        elif self.figures_material == None:
-            print ("You can safely play this board game next to a campfire.")
         elif self.figures_material == "metal":
             print ("You can safely play this board game next to a campfire.")
         else:
             print ("This board game should not be played next to a campfire.")  
-
